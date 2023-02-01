@@ -1,14 +1,20 @@
 import { Container,Navbar,Card } from "react-bootstrap";
+import { NavLink } from "react-router-dom";
 import Cart from "../Cart/Cart";
+import classes from './Header.module.css'
 const Header = () => {
     return (
 
         <header>
         <Navbar bg="dark" expand="sm" variant="dark">
-            <Container color='white'>
+            <Container style={{color:'white'}}>
             <Navbar.Brand>HOME</Navbar.Brand>
-            <Navbar.Brand >STORE</Navbar.Brand>
-            <Navbar.Brand >ABOUT</Navbar.Brand>
+            <Navbar.Brand >
+              <NavLink to='/' style={{color:'white'}}>
+                STORE</NavLink></Navbar.Brand>
+            <Navbar.Brand>
+              <NavLink activeClassName={classes.active} to='/about' style={{color:'white'}}>ABOUT</NavLink>
+              </Navbar.Brand>
             <Cart/>
             </Container>
           </Navbar>
