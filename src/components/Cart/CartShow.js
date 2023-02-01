@@ -1,49 +1,14 @@
-import React from 'react';
+import React,{useContext} from 'react';
 import ModalCart from '../Modal/ModalCart';
 import classes from './CartShow.module.css'
 import CartItem from './CartItem';
+import CartContext from '../../Store/cart-context';
 const CartShow=()=>{
-    const cartElements = [
+       const cartCtx = useContext(CartContext);
 
-        {
-        
-        title: 'Colors',
-        
-        price: 100,
-        
-        imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%201.png',
-        
-        quantity: 2,
-        
-        },
-        
-        {
-        
-        title: 'Black and white Colors',
-        
-        price: 50,
-        
-        imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%202.png',
-        
-        quantity: 3,
-        
-        },
-        
-        {
-        
-        title: 'Yellow and Black Colors',
-        
-        price: 70,
-        
-        imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%203.png',
-        
-        quantity: 1,
-        
-        }
-        
-        ]
-        const items=cartElements.map((item)=>{
+        const items=cartCtx.listOfItems.map((item)=>{
           return <CartItem
+          key={item.id}
           id={item.id}
           title={item.title}
           price={item.price}
@@ -64,7 +29,7 @@ const CartShow=()=>{
         <ul>{items}</ul>
         <div className={classes.total}>
           <span>Total</span>
-          <span className={classes.total_amount}>{0}</span>
+          <span className={classes.total_amount}>{cartCtx.totalAmount}</span>
         </div>
         </div>
     </ModalCart>

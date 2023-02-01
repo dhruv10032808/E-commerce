@@ -5,6 +5,7 @@ const Data = () => {
     const productsArr = [
 
         {
+        id:"p1",
         
         title: 'Colors',
         
@@ -15,6 +16,7 @@ const Data = () => {
         },
         
         {
+            id:"p2",
         
         title: 'Black and white Colors',
         
@@ -25,6 +27,7 @@ const Data = () => {
         },
         
         {
+        id:"p3",
         
         title: 'Yellow and Black Colors',
         
@@ -35,7 +38,8 @@ const Data = () => {
         },
         
         {
-        
+        id:"p4",
+
         title: 'Blue Color',
         
         price: 100,
@@ -53,6 +57,8 @@ const Data = () => {
         price={item.price}
         title={item.title}
         imageUrl={item.imageUrl}
+        key={item.id}
+        id={item.id}
       />
       
     );
