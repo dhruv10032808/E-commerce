@@ -8,7 +8,10 @@ const Header = () => {
         <header>
         <Navbar bg="dark" expand="sm" variant="dark">
             <Container style={{color:'white'}}>
-            <Navbar.Brand>HOME</Navbar.Brand>
+            <Navbar.Brand>
+              <NavLink to='/home' style={{color:'white'}}>HOME
+              </NavLink>
+              </Navbar.Brand>
             <Navbar.Brand >
               <NavLink to='/' style={{color:'white'}}>
                 STORE</NavLink></Navbar.Brand>
