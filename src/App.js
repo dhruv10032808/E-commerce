@@ -2,6 +2,8 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 import './App.css';
 import Data from './components/Body/Data';
+import ProductDetail from './components/Body/ProductDetail';
+import ProductsPage from './components/Body/ProductsPage';
 import CartButton from './components/Cart/CartButton';
 import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
@@ -39,6 +41,12 @@ const App = () => {
       </Route>
       <Route path='/contactus' exact>
       <ContactUs onSubmit={postRequestHandler}/>
+      </Route>
+      <Route path='/products' exact>
+        <ProductsPage/>
+      </Route>
+      <Route path='/products/:productId' exact>
+        <ProductDetail/>
       </Route>
       <Footer/>
       </ContextProvider>)
