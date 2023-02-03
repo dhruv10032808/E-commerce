@@ -6,8 +6,21 @@ import CartButton from './components/Cart/CartButton';
 import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
 import AboutUs from './pages/AboutUs';
+import ContactUs from './pages/ContactUs';
 import Home from './pages/Home';
 import ContextProvider from './Store/ContextProvider';
+
+async function postRequestHandler(data){
+  const response=await fetch('https://react-http-1ccd0-default-rtdb.firebaseio.com/data.json',{
+    method:'POST',
+    body:JSON.stringify(data),
+    headers:{
+      'Content-Type':'application/json'
+    }
+  })
+  const values=await response.json();
+  console.log(values);
+}
 
 const App = () => {
   return (<ContextProvider>
@@ -23,6 +36,9 @@ const App = () => {
       </Route>
       <Route path='/home' exact>
       <Home/>
+      </Route>
+      <Route path='/contactus' exact>
+      <ContactUs onSubmit={postRequestHandler}/>
       </Route>
       <Footer/>
       </ContextProvider>)

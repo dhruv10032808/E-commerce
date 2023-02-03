@@ -18,6 +18,9 @@ const Header = () => {
             <Navbar.Brand>
               <NavLink activeClassName={classes.active} to='/about' style={{color:'white'}}>ABOUT</NavLink>
               </Navbar.Brand>
+              <Navbar.Brand>
+                <NavLink to='/contactus' style={{color:'white'}}>CONTACT US</NavLink>
+              </Navbar.Brand>
             <Cart/>
             </Container>
           </Navbar>
