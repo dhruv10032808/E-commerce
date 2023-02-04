@@ -3,7 +3,7 @@ import ModalCart from '../Modal/ModalCart';
 import classes from './CartShow.module.css'
 import CartItem from './CartItem';
 import CartContext from '../../Store/cart-context';
-const CartShow=()=>{
+const CartShow=(props)=>{
        const cartCtx = useContext(CartContext);
 
         const items=cartCtx.listOfItems.map((item)=>{
@@ -19,7 +19,7 @@ const CartShow=()=>{
         return (
         <ModalCart>    
                 <div className={classes.cart_show}>
-        <button className={classes.cart_cancel_btn}>X</button>
+        <button className={classes.cart_cancel_btn} onClick={props.removeCartHandler}>X</button>
         <h1 className={classes.title}>CART</h1>
         <div className={classes.subtitle}>
           <span className={classes.subtitle_name}>ITEM</span>

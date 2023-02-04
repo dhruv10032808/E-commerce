@@ -6,11 +6,16 @@ const Cart=()=>{
    const [cartIsShown,setCartIsShown]=useState(false);
    const showCartHandler=()=>{
     setCartIsShown(true);
+    cartCtx.getItem();
    }
+   const removeCartHandler=()=>{
+    setCartIsShown(false);
+   }
+
    return(
     <div>
     <button onClick={showCartHandler}>Cart <p>{cartCtx.totalQuantity}</p></button>
-    {cartIsShown && <CartShow/>}
+    {cartIsShown && <CartShow removeCartHandler={removeCartHandler}/>}
     </div>
    )
 }

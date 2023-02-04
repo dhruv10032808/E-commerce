@@ -32,8 +32,9 @@ const Login=()=>{
     }
     }).then((data)=>{
       authCtx.login(data.idToken)
-      console.log(data.idToken)
-      history.replace('/products')
+      authCtx.addEmail(data.email)
+      console.log(data.email)
+      history.replace('/')
     })
     .catch((err)=>{
        alert(err);

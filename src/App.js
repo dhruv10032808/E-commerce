@@ -3,7 +3,7 @@ import { Redirect, Route } from 'react-router-dom';
 import './App.css';
 import Data from './components/Body/Data';
 import ProductDetail from './components/Body/ProductDetail';
-import ProductsPage from './components/Body/ProductsPage';
+
 import CartButton from './components/Cart/CartButton';
 import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
@@ -36,8 +36,9 @@ const App = () => {
       </Route>
       </main>
       <Route path='/' exact>
-      <Data/>
-      <CartButton/>
+      {authCtx.isLoggedIn && <main><Data/>
+      <CartButton/></main>}
+      {!authCtx.isLoggedIn && <Redirect to='/login'/>}
       </Route>
       <Route path='/home' exact>
       <Home/>
@@ -45,11 +46,7 @@ const App = () => {
       <Route path='/contactus' exact>
       <ContactUs onSubmit={postRequestHandler}/>
       </Route>
-      <Route path='/products' exact>
-      {authCtx.isLoggedIn && <ProductsPage/>}
-      {!authCtx.isLoggedIn && <Redirect to='/login'/>}
-      </Route>
-      <Route path='/products/:productId' exact>
+      <Route path='/home/:productId' exact>
       <ProductDetail/>
       </Route>
       {!authCtx.isLoggedIn && <Route path='/login' exact>
