@@ -10,6 +10,7 @@ import Header from './components/Header/Header';
 import AboutUs from './pages/AboutUs';
 import ContactUs from './pages/ContactUs';
 import Home from './pages/Home';
+import Login from './pages/Login';
 import ContextProvider from './Store/ContextProvider';
 
 async function postRequestHandler(data){
@@ -47,6 +48,9 @@ const App = () => {
       </Route>
       <Route path='/products/:productId' exact>
         <ProductDetail/>
+      </Route>
+      <Route path='/login' exact>
+        <Login/>
       </Route>
       <Footer/>
       </ContextProvider>)

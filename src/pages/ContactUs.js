@@ -24,7 +24,7 @@ function ContactUs(props) {
         <input type='text' id='name' ref={nameRef} />
       </div>
       <div>
-        <label htmlFor='email-id'>Opening Text</label>
+        <label htmlFor='email-id'>email</label>
         <input type='email' id='email-id' ref={emailRef}></input>
       </div>
       <div>
