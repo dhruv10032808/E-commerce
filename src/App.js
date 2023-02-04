@@ -1,5 +1,5 @@
-import React from 'react';
-import { Route } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Redirect, Route } from 'react-router-dom';
 import './App.css';
 import Data from './components/Body/Data';
 import ProductDetail from './components/Body/ProductDetail';
@@ -11,6 +11,7 @@ import AboutUs from './pages/AboutUs';
 import ContactUs from './pages/ContactUs';
 import Home from './pages/Home';
 import Login from './pages/Login';
+import AuthContext from './Store/auth-context';
 import ContextProvider from './Store/ContextProvider';
 
 async function postRequestHandler(data){
@@ -26,6 +27,7 @@ async function postRequestHandler(data){
 }
 
 const App = () => {
+  const authCtx=useContext(AuthContext)
   return (<ContextProvider>
       <main>
       <Header/> 
@@ -44,14 +46,15 @@ const App = () => {
       <ContactUs onSubmit={postRequestHandler}/>
       </Route>
       <Route path='/products' exact>
-        <ProductsPage/>
+      {authCtx.isLoggedIn && <ProductsPage/>}
+      {!authCtx.isLoggedIn && <Redirect to='/login'/>}
       </Route>
       <Route path='/products/:productId' exact>
-        <ProductDetail/>
+      <ProductDetail/>
       </Route>
-      <Route path='/login' exact>
+      {!authCtx.isLoggedIn && <Route path='/login' exact>
         <Login/>
-      </Route>
+      </Route>}
       <Footer/>
       </ContextProvider>)
 
