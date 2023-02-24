@@ -14,7 +14,7 @@ const ContextProvider=(props)=>{
   }
   console.log(emailId);
   const getItemHandler=useCallback(async ()=>{
-    const response=await fetch(`https://crudcrud.com/api/29b497f66ec540e79ab3764d8b0e1482/cart${emailId}`)
+    const response=await fetch(`https://crudcrud.com/api/da823a8634bb4f9f85659fa5f3281623/cart${emailId}`)
     const data=await response.json();
     const cartItem = [];
     let amount = 0;
@@ -24,7 +24,8 @@ const ContextProvider=(props)=>{
         id: data[key].id,
         title: data[key].title,
         price: data[key].price,
-        imageUrl:data[key].imageUrl
+        imageUrl:data[key].imageUrl,
+        quantity:data[key].quantity
       });
       }
       setTotalAmount(amount)
@@ -34,7 +35,7 @@ const ContextProvider=(props)=>{
         getItemHandler()
       }, [getItemHandler]);
     const addItemToCartHandler=(item)=>{
-        fetch(`https://crudcrud.com/api/29b497f66ec540e79ab3764d8b0e1482/cart${emailId}`,{
+        fetch(`https://crudcrud.com/api/da823a8634bb4f9f85659fa5f3281623/cart${emailId}`,{
                 method: "POST",
                 body: JSON.stringify({
                   userid: emailId,
@@ -73,7 +74,9 @@ const ContextProvider=(props)=>{
     //     }
     //     let updatedItem={...item,quantity:1};
     //     setCartItems([...cartItems,updatedItem]);
-    const removeItemFromCartHandler=()=>{};
+    const removeItemFromCartHandler=()=>{
+      
+    };
 
     let cart_context={
     listOfItems:cartItems,

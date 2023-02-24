@@ -1,10 +1,15 @@
+import { useContext } from "react";
 import { Container,Navbar,Card } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
+import AuthContext from "../../Store/auth-context";
 import Cart from "../Cart/Cart";
 import classes from './Header.module.css'
 const Header = () => {
+  const authCtx=useContext(AuthContext);
+  const logoutHandler=()=>{
+    authCtx.logout();
+  }
     return (
-
         <header>
         <Navbar bg="dark" expand="sm" variant="dark">
             <Container style={{color:'white'}}>
@@ -23,6 +28,9 @@ const Header = () => {
               </Navbar.Brand>
               <Navbar.Brand>
                 <NavLink to='/contactus' style={{color:'white'}}>CONTACT US</NavLink>
+              </Navbar.Brand>
+              <Navbar.Brand>
+                <NavLink to='/login' style={{color:'white'}}><button onClick={logoutHandler}>Logout</button></NavLink>
               </Navbar.Brand>
             <Cart/>
             </Container>
